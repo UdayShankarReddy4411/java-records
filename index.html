@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Java Lab (23IT5351) –K. Uday Shankar Reddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Advanced Java Lab (23IT5351)</h1>
+    <h2>Uday Shankar Reddy K – Roll No: 238W1A1296</h2>
+</header>
+
+<div class="weeks-container">
+    <script>
+        for (let i = 1; i <= 12; i++) {
+            document.write(`<div class='week-box' onclick='loadWeek(${i})'>Week ${i}</div>`);
+        }
+    </script>
+</div>
+
+<div id="content-viewer">
+    <h2 id="week-title">Click a Week</h2>
+
+    <iframe id="frame"></iframe>
+
+    <a id="downloadLink" class="download-btn" download>Download Original File</a>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

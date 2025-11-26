@@ -13,10 +13,74 @@ const fileMap = {
     12: "JAVA-WEEK-12.docx"
 };
 
-function loadWeek(week) {
-    document.getElementById("week-title").innerText = `Week ${week} Content`;
-
-    document.getElementById("frame").src = `converted/week${week}.html`;
-
-    document.getElementById("downloadLink").href = `docs/${fileMap[week]}`;
+// Theme Toggle Functionality
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    
+    if (html.getAttribute('data-theme') === 'light') {
+        html.removeAttribute('data-theme');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Dark';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        html.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Light';
+        localStorage.setItem('theme', 'light');
+    }
 }
+
+// Load saved theme
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.getElementById('theme-icon').textContent = '☀️';
+        document.getElementById('theme-text').textContent = 'Light';
+    }
+});
+
+// Load Week Functionality
+function loadWeek(week) {
+    const weekTitle = document.getElementById('week-title');
+    const frame = document.getElementById('frame');
+    const downloadLink = document.getElementById('downloadLink');
+    const loading = document.getElementById('loading');
+    
+    // Update title
+    weekTitle.textContent = `Week ${week} Content`;
+    
+    // Show loading
+    loading.classList.add('active');
+    frame.style.display = 'none';
+    downloadLink.style.display = 'none';
+    
+    // Remove active class from all boxes
+    document.querySelectorAll('.week-box').forEach(box => {
+        box.classList.remove('active');
+    });
+    
+    // Add active class to clicked box - find the correct week box
+    const weekBoxes = document.querySelectorAll('.week-box');
+    if (weekBoxes[week - 1]) {
+        weekBoxes[week - 1].classList.add('active');
+    }
+    
+    // Simulate loading and set iframe source
+    setTimeout(() => {
+        frame.src = `converted/week${week}.html`;
+        downloadLink.href = `docs/${fileMap[week]}`;
+        
+        loading.classList.remove('active');
+        frame.style.display = 'block';
+        downloadLink.style.display = 'inline-flex';
+    }, 500);
+}
+
+// Iframe load event
+document.getElementById('frame').addEventListener('load', function() {
+    const loading = document.getElementById('loading');
+    loading.classList.remove('active');
+});

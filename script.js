@@ -1,16 +1,16 @@
 const fileMap = {
-    1: "Java-week-1.docx",
-    2: "Java-week-2.docx",
-    3: "Java-week-3.docx",
-    4: "Java week-4.docx",
-    5: "Java week-5.docx",
-    6: "JAVA-WEEK-6.docx",
-    7: "Java-week-7.docx",
-    8: "JAVA-WEEK-8.docx",
-    9: "JAVA-WEEK-9.docx",
-    10: "JAVA-WEEK-10.docx",
-    11: "JAVA-WEEK-11.docx",
-    12: "JAVA-WEEK-12.docx"
+    1: "Java week-1.pdf",
+    2: "Java week-2.pdf",
+    3: "Java week-3.pdf",
+    4: "Java week-4.pdf",
+    5: "Java week-5.pdf",
+    6: "Java week-6.pdf",
+    7: "Java week-7.pdf",
+    8: "Java week-8.pdf",
+    9: "Java week-9.pdf",
+    10:"Java week-10.pdf",
+    11:"Java week-11.pdf",
+    12:"Java week-12.pdf"
 };
 
 // Theme Toggle Functionality
@@ -50,7 +50,7 @@ function loadWeek(week) {
     const loading = document.getElementById('loading');
     
     // Update title
-    weekTitle.textContent = `Week ${week} Content`;
+    weekTitle.textContent = `Week ${week} - Lab Assignment`;
     
     // Show loading
     loading.classList.add('active');
@@ -62,7 +62,7 @@ function loadWeek(week) {
         box.classList.remove('active');
     });
     
-    // Add active class to clicked box - find the correct week box
+    // Add active class to clicked box
     const weekBoxes = document.querySelectorAll('.week-box');
     if (weekBoxes[week - 1]) {
         weekBoxes[week - 1].classList.add('active');

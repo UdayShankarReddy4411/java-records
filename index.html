@@ -5,39 +5,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+    </head>
 <body>
-
-<div class="theme-toggle" onclick="toggleTheme()">
-    <span id="theme-icon">🌙</span>
-    <span id="theme-text">Dark</span>
-</div>
-
 <header>
-    <h1>Advanced Java Lab (23IT5351)</h1>
-    <h2>Uday Shankar Reddy K – Roll No: 238W1A1296</h2>
+    <div class="header-left">
+        <img src="uday.png" alt="Profile" class="profile-picture">
+        <div class="header-info">
+            <h1>Advanced Java Lab (23IT5351)</h1>
+            <h2>Uday Shankar Reddy K – Roll No: 238W1A1296</h2>
+        </div>
+        <div class="header-right">
+        <div class="trainer-info">Dr. M. Ramesh</div>
+        <div class="class-info">Class: III/IV IT | Section: B</div>
+    </div>
+    </div>
 </header>
 
-<div class="weeks-container">
-    <script>
-        for (let i = 1; i <= 12; i++) {
-            document.write(`<div class='week-box' onclick='loadWeek(${i})'><span>Week ${i}</span></div>`);
-        }
-    </script>
-</div>
+<div class="main-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Lab Weeks</h3>
+        </div>
+        <div class="week-list">
+            <script>
+                for (let i = 1; i <= 12; i++) {
+                    document.write(`<div class='week-box' onclick='loadWeek(${i})'><span>Week ${i}</span></div>`);
+                }
+            </script>
+        </div>
+    </aside>
 
-<div id="content-viewer">
-    <h2 id="week-title">Select a Week to Begin</h2>
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p>Loading content...</p>
-    </div>
-    <iframe id="frame" style="display:none;"></iframe>
-    <a id="downloadLink" class="download-btn" download style="display:none;">Download File</a>
-</div>
-
-<script src="script.js"></script>
-
-</body>
+    <main class="content-area">
+        <div id="content-viewer">
+            <h2 id="week-title">Select a Week to Begin</h2>
+            <div class="content-card">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Loading content...</p>
+                </div>
+                <iframe id="frame" style="display:none;"></iframe>
+                <a id="downloadLink" class="download-btn" download style="display:none;">Download File</a>
+            </div>
+        </div>
+    </main>
+</div></body>
 </html>
